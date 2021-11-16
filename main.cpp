@@ -18,6 +18,7 @@ using namespace std;
   Scan, C-Scan, or Quit
  * */
 
+vector<int> readInCylinders(vector<int> vect);
 
 int main () {
 
@@ -27,7 +28,7 @@ int main () {
 	const int MIN = 0;
 
 	int currentLoc, travelDir, flyback;
-
+	int choice = -1;
 
 
 	cout << "This disk scheduler tries to optimize on seek time for disk accesses." << endl;
@@ -46,8 +47,57 @@ int main () {
 	cout << endl;
 
 	cout << "Please enter the list of cylinder numbers for the file: ";
+	cylinders =  readInCylinders(cylinders);
+
+	//Switch Menu
+	do {
+	cout << "-------------------------------------------------------------" << endl << endl;
+	cout << " +-----------------------+" << endl
+	     << " | Please enter a choice |" << endl 
+	     << " | 1. SCAN  		 |" << endl
+	     << " | 2. C-SCAN             |" << endl
+    	     << " | 3. QUIT               |" << endl
+     	     << " +-----------------------+" << endl;
+
+	cin >> choice;
+
+
+	
+	}while(choice != 3);
+
+
+
+
 
 
 
 return 0;
 }
+
+/*
+ *paramater vect<int> vect
+  Reads in elements of a vector separated by space until enter is pressed. 
+  Assigns element to vect using push_back.
+  returns vect
+ */
+vector<int> readInCylinders(vector<int> vect) {
+
+//	cout << "Reading in Cylinders..." << endl;
+	do{
+	 int location;
+	 cin >> location;
+
+	vect.push_back(location);
+	
+	}while (cin.peek() != '\n');
+//
+//	for(int i = 0; i < vect.size(); i++) {
+//
+//		cout << vect.at(i) << " ";
+//		cout << endl;
+//	}
+
+
+	return vect;
+}
+
